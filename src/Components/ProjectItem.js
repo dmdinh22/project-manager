@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ProjectItem extends Component {
     // bind deleteProject on click handler to pass up id
@@ -26,5 +27,11 @@ class ProjectItem extends Component {
         );
     }
 }
+
+// validation checking type of properties
+ProjectItem.propTypes = {
+    project: PropTypes.object,
+    onDelete: PropTypes.func
+};
 
 export default ProjectItem;

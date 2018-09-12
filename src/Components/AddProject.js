@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
 import uuid from 'uuid';
+import PropTypes from 'prop-types';
 
 class AddProject extends Component {
     // store data that we submit from form into componentstate
@@ -69,5 +70,11 @@ class AddProject extends Component {
         );
     }
 }
+
+// validation checking type of properties
+AddProject.propTypes = {
+    categories: PropTypes.array,
+    addProject: PropTypes.func
+};
 
 export default AddProject;

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
+import PropTypes from 'prop-types';
 
 class Projects extends Component {
     //grabbing the delete id from child component to pass up
     deleteProject(id) {
         this.props.onDelete(id);
     }
+
     render() {
         let projectItems;
 
@@ -29,5 +31,11 @@ class Projects extends Component {
         );
     }
 }
+
+// validation checking type of properties
+Projects.propTypes = {
+    projects: PropTypes.array,
+    onDelete: PropTypes.func
+};
 
 export default Projects;
