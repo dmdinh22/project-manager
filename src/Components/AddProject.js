@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
+import uuid from 'uuid';
 
 class AddProject extends Component {
     // store data that we submit from form into componentstate
@@ -25,6 +26,7 @@ class AddProject extends Component {
         this.setState(
             {
                 newProject: {
+                    id: uuid.v4(),
                     title: this.refs.title.value,
                     category: this.refs.category.value
                 }

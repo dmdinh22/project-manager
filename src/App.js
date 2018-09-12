@@ -43,7 +43,18 @@ class App extends Component {
         console.log(project);
         let updatedProjects = this.state.projects;
         updatedProjects.push(project);
+
+        //reset the state
         this.setState({ projects: updatedProjects });
+    }
+
+    handleDeleteProject(id) {
+        let updateProjects = this.state.projects;
+        let index = updateProjects.findIndex(x => x.id === id);
+        updateProjects.splice(index, 1);
+
+        //reset the state
+        this.setState({ projects: updateProjects });
     }
 
     render() {
@@ -51,7 +62,10 @@ class App extends Component {
         return (
             <div className="App">
                 <AddProject addProject={this.handleAddProject.bind(this)} />
-                <Projects projects={this.state.projects} />
+                <Projects
+                    projects={this.state.projects}
+                    onDelete={this.handleDeleteProject.bind(this)}
+                />
             </div>
         );
     }
