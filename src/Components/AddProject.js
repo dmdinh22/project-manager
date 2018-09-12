@@ -2,12 +2,54 @@ import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
 
 class AddProject extends Component {
+    // store data that we submit from form into componentstate
+    constructor() {
+        super();
+        this.state = {
+            newProject: {}
+        };
+    }
+
+    // setting this.props with these values
+    static defaultProps = {
+        categories: ['Web Design', 'Web Development', 'Mobile Development']
+    };
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        if (this.refs.title.value === '') {
+            alert('Title is required');
+        }
+
+        this.setState(
+            {
+                newProject: {
+                    title: this.refs.title.value,
+                    category: this.refs.category.value
+                }
+            },
+            //callback function
+            function() {
+                //console.log(this.state);
+                this.props.addProject(this.state.newProject);
+            }
+        );
+    }
+
     render() {
-        let projectItems;
+        // pulled from props above render()
+        let categoryOptions = this.props.categories.map(category => {
+            return (
+                <option key={category} value={category}>
+                    {category}
+                </option>
+            );
+        });
         return (
             <div>
                 <h3>Add Project</h3>
-                <form>
+                <form onSubmit={this.handleSubmit.bind(this)}>
                     <div>
                         <label>Title</label>
                         <br />
@@ -16,8 +58,10 @@ class AddProject extends Component {
                     <div>
                         <label>Categpry</label>
                         <br />
-                        <select ref="category" />
+                        <select ref="category">{categoryOptions}</select>
                     </div>
+                    <br />
+                    <input type="submit" value="Submit" />
                 </form>
             </div>
         );
