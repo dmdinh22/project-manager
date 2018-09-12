@@ -8,8 +8,6 @@ class ProjectItem extends Component {
     }
 
     render() {
-        console.log(this.props);
-        ('');
         return (
             <li className="ProjectItem">
                 <strong>{this.props.project.title}</strong>:{' '}
