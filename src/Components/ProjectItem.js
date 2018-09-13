@@ -5,7 +5,7 @@ class ProjectItem extends Component {
     // bind deleteProject on click handler to pass up id
     deleteProject(id) {
         this.props.onDelete(id);
-    }
+    } //deleteProject
 
     render() {
         return (

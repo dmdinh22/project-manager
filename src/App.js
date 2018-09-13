@@ -75,7 +75,7 @@ class App extends Component {
 
         //reset the state
         this.setState({ projects: updatedProjects });
-    }
+    } //handleAddProject
 
     handleDeleteProject(id) {
         let updateProjects = this.state.projects;
@@ -84,7 +84,7 @@ class App extends Component {
 
         //reset the state
         this.setState({ projects: updateProjects });
-    }
+    } //handleDeleteProject
 
     render() {
         // set props in component similar to attributes
